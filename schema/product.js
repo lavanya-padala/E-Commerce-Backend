@@ -1,0 +1,30 @@
+const mongoose=require("mongoose")
+const sch=mongoose.Schema({
+    name:{
+        type:String,
+        min:3,
+        required:true
+    },
+    price:{
+        type:Number,
+        min:3,
+        required:true
+    },
+    description:{
+        type:String,
+        min:6,
+        required:true
+    },
+    warranty:{
+        type:String,
+        min:3,
+        required:true
+    },
+    total:{
+        type:Number,
+        min:2,
+        required:true
+    }
+},{collection:"productsdata"}
+)
+module.exports=mongoose.model("sch",sch)
