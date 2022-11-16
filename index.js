@@ -130,7 +130,7 @@ app.get("/reset-password/:id/:token",async(req,res)=>{
         console.log(error)
     }
 })
-app.post("/reset-passwod/:id/:token",async(req,res)=>{
+app.post("/reset-password/:id/:token",async(req,res)=>{
     const{id,token}=req.params
     const {password}=req.body
     // console.log(req.params)
