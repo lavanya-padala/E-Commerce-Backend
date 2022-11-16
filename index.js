@@ -2,6 +2,7 @@ const express=require("express")
 const port=9999
 const nodemailer=require("nodemailer")
 const path=require("path")
+const url="https://shielded-fjord-56153.herokuapp.com/"
 const mongoose=require("mongoose")
 const dotenv=require("dotenv")
 const bodyParser=require("body-parser")
@@ -80,7 +81,8 @@ app.post("/forgot-password",async(req,res)=>{
         }
         const secret=process.env.TOKEN_SECRET+isuser.password
         const token=jwt.sign({email:isuser.email,id:isuser._id},secret,{expiresIn:"5m"})
-        const link=`http://localhost:9999/reset-password/${isuser._id}/${token}`
+        //const link=`http://localhost:9999/reset-password/${isuser._id}/${token}`
+        const link=`${url}reset-password/${isuser._id}/${token}`
         //res.send(link)
         var transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -128,7 +130,7 @@ app.get("/reset-password/:id/:token",async(req,res)=>{
         console.log(error)
     }
 })
-app.post("/reset-password/:id/:token",async(req,res)=>{
+app.post("/reset-passwod/:id/:token",async(req,res)=>{
     const{id,token}=req.params
     const {password}=req.body
     // console.log(req.params)
